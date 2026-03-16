@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Configuration des Symptômes - Fanafody{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <!-- Grille corrigée : centrée et largeur adaptée -->
+    <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="card border-0 shadow-sm overflow-hidden">
+            
+            <!-- Header -->
+            <div class="card-header border-0 py-4" style="background-color: var(--primary-teal);">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="text-white mb-1 fw-bold h4">
+                            <i class="bi bi-clipboard2-pulse me-2"></i>Configuration des Symptômes
+                        </h3>
+                        <p class="text-white-50 mb-0 small">Sélectionnez les symptômes et définissez les intensités</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body avec Tableau -->
+            <div class="card-body p-0 bg-white">
+                <!-- Hauteur dynamique basée sur le viewport (vh) -->
+                <div class="table-responsive table-container-vh">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="border-0 text-muted small text-uppercase ps-4" style="width: 80px;">Actif</th>
+                                <th scope="col" class="border-0 text-muted small text-uppercase">Symptôme</th>
+                                <th scope="col" class="border-0 text-muted small text-uppercase text-center" style="width: 150px;">Prix Estimé</th>
+                                <th scope="col" class="border-0 text-muted small text-uppercase text-center" style="width: 150px;">Intensité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in lsSympt %}
+                            <tr>
+                                <!-- Checkbox centrée -->
+                                <td class="ps-4 text-center">
+                                    <input class="form-check-input rounded-circle border-2" type="checkbox" name="symptom_{{ s.id }}" checked style="width: 1.2em; height: 1.2em;">
+                                </td>
+                                <!-- Nom du symptôme -->
+                                <td class="fw-semibold text-dark">
+                                    {{ s.name }}
+                                </td>
+                                <!-- Badge Prix -->
+                                <td class="text-center">
+                                    <span class="badge bg-light text-dark border fw-normal py-2 px-3 rounded-pill">
+                                        {{ s.prix }} Ar
+                                    </span>
+                                </td>
+                                <!-- Input Intensité -->
+                                <td class="text-center">
+                                    <input type="number" name="intensity" class="form-control form-control-sm text-center fw-bold border-0 bg-light" value="5" min="1" max="10" style="width: 70px; margin: 0 auto;">
+                                </td>
+                                <input type="hidden" name="symptom_id" value="{{ s.id }}">
+                            </tr>
+                            {% else %}
+                            <!-- Message si liste vide -->
+                            <tr>
+                                <td colspan="4" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
+                                    Aucun symptôme disponible.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section Budget (Séparée visuellement) -->
+            <div class="border-top bg-light p-4">
+                <div class="row align-items-center justify-content-end">
+                    <div class="col-auto">
+                        <label for="budget" class="form-label mb-0 fw-bold text-muted text-uppercase small">
+                            <i class="bi bi-wallet2 me-1"></i> Budget Maximum
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="number" name="budget" class="form-control form-control-lg text-end fw-bold" id="budget" placeholder="Ex: 50000" required>
+                            <span class="input-group-text fw-bold bg-white">Ar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="card-footer bg-white border-top py-3 px-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="/" class="btn btn-link text-muted text-decoration-none ps-0">
+                        <i class="bi bi-arrow-left me-1"></i> Annuler
+                    </a>
+                    <button type="submit" class="btn text-white rounded-pill px-5 py-2 fw-bold shadow-sm" style="background-color: var(--primary-teal);">
+                        Générer l'Ordonnance <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

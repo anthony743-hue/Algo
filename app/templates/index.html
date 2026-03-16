@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - Fanafody{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+
+        <!-- Hero Section : Style Épuré et Centré -->
+        <div class="text-center py-5 mb-5">
+            <h1 class="display-4 fw-bold text-dark mb-3">
+                Prescription Médicale <br>
+            </h1>
+            <p class="lead text-muted col-md-8 mx-auto mb-4">
+                Trouvez la combinaison optimale de médicaments pour guérir vos patients au meilleur coût grâce à notre algorithme avancé.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/patient-symptoms" class="btn btn-lg px-5 py-3 text-white shadow" style="background-color: #0d9488; border-radius: 50px;">
+                    <i class="bi bi-file-earmark-medical me-2"></i> Démarrer une Ordonnance
+                </a>
+            </div>
+        </div>
+
+        <!-- Fonctionnalités : Cartes Modernes avec Hover -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm feature-card p-4">
+                    <div class="card-body">
+                        <div class="icon-box bg-light text-teal mb-3">
+                            <i class="bi bi-ui-checks"></i>
+                        </div>
+                        <h5 class="fw-bold">Saisie Simplifiée</h5>
+                        <p class="text-muted small">Interface intuitive pour entrer rapidement les symptômes et contraintes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm feature-card p-4">
+                    <div class="card-body">
+                        <div class="icon-box bg-light text-teal mb-3">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h5 class="fw-bold">Intelligence Artificielle</h5>
+                        <p class="text-muted small">Analyse algorithmique pour la meilleure combinaison thérapeutique.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm feature-card p-4">
+                    <div class="card-body">
+                        <div class="icon-box bg-light text-teal mb-3">
+                            <i class="bi bi-piggy-bank"></i>
+                        </div>
+                        <h5 class="fw-bold">Budget Contrôlé</h5>
+                        <p class="text-muted small">Respect strict du budget patient pour un accès aux soins équitable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guide d'utilisation : Accordion ou Clean List -->
+        <div class="card border-0 shadow-sm mb-5">
+            <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+                <h5 class="fw-bold text-dark"><i class="bi bi-book me-2 text-teal"></i>Comment ça marche ?</h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Sélection Patient (Facultatif)</h6>
+                                <p class="text-muted small mb-0">Choisissez le patient dans la liste.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Définir le Budget</h6>
+                                <p class="text-muted small mb-0">Indiquez votre budget.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Noter les Symptômes</h6>
+                                <p class="text-muted small mb-0">Évaluez la sévérité sur l'échelle.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Génération</h6>
+                                <p class="text-muted small mb-0">On génère l'ordonnance optimale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

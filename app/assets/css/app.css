@@ -1,0 +1,123 @@
+/* Variables de Couleur Médicales */
+:root {
+    --primary-teal: #0d9488;
+    --primary-teal-dark: #0f766e;
+    --bg-light: #f8fafc;
+}
+
+/* Corps de page */
+body {
+    background-color: var(--bg-light);
+    color: #334155; /* Slate 700 - Excellent pour la lisibilité */
+}
+
+/* Bouton Nav Spécifique */
+.navbar .btn-light:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* Cartes globales */
+.card {
+    border-radius: 1rem;
+}
+
+/* Alertes */
+.alert {
+    border-radius: 0.75rem;
+    border-left: 5px solid #0d9488;
+}
+
+/* Footer */
+footer a {
+    text-decoration: none;
+    color: #64748b;
+}
+
+    .text-teal { color: #0d9488; }
+    
+    .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 1rem;
+        background: #ffffff;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,0.1) !important;
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 1.5rem;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        background-color: #e6f2f0;
+        color: #0d9488;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .table-responsive {
+        max-height: 300px; 
+        overflow-y: auto;
+    }
+    
+    /* Optionnel : Fixe l'en-tête pour qu'il reste visible quand on scrolle */
+    .table thead th {
+        position: sticky;
+        top: 0;
+        background-color: #f8fafc; /* Important pour cacher le texte qui passe dessous */
+        z-index: 10;
+    }
+
+    /* Container du tableau avec hauteur fixe relative au viewport */
+.table-container-vh {
+    /* Hauteur max = 50% de la hauteur de l'écran. Ajustez selon vos besoins. */
+    max-height: 50vh; 
+    overflow-y: auto;
+}
+
+/* Fixe l'en-tête du tableau lors du scroll vertical */
+.table-container-vh thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8fafc; /* Doit correspondre au fond du thead pour l'effet d'opacité */
+    z-index: 10;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.05); /* Petite ombre pour détacher l'en-tête */
+}
+
+/* Style amélioré pour l'input number */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Animation douce sur les lignes du tableau */
+.table-hover tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+/* Bouton d'action désactivé si besoin */
+.btn-teal:disabled {
+    background-color: #94a3b8 !important;
+    border-color: #94a3b8 !important;
+    cursor: not-allowed;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fanafody{% endblock %}</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- Bootstrap Icons (Nécessaire pour vos icônes <i class="bi...>) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Votre CSS Personnalisé -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+    {% block extra_css %}{% endblock %}
+
+    <!-- Google Font : Inter (Moderne et lisible) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            /* Gris très clair pour reposer les yeux */
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar Modernisée -->
+    <!-- Navbar Clean Medical -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <div class="brand-icon bg-teal text-white rounded-circle me-2 d-flex align-items-center justify-content-center"
+                    style="width: 40px; height: 40px;">
+                    <i class="bi bi-capsule"></i>
+                </div>
+                <span class="fw-bold text-dark fs-5">Fanafody</span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-4 text-dark"></i>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary px-3 py-2 rounded-pill hover-bg-light" href="/">
+                            <i class="bi bi-house-door me-1"></i> Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary px-3 py-2 rounded-pill hover-bg-light" href="/history">
+                            <i class="bi bi-clock-history me-1"></i> Historique
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <!-- Bouton d'action principal (CTA) -->
+                        <a href="/patient-symptoms" class="btn btn-teal text-dark rounded-pill px-4 border shadow-sm">
+                            <i class="bi bi-plus-circle me-1"></i> Nouvelle Ordonnance
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container py-5 flex-grow-1">
+        {% if message %}
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer Simplifié -->
+    <footer class="bg-white text-center py-4 mt-auto border-top">
+        <p class="text-muted small mb-0">&copy; 2024 Fanafody - Système de Prescription Médicale</p>
+    </footer>
+
+    <!-- Bootstrap JS (Corrigé pour utiliser url_for) -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>
