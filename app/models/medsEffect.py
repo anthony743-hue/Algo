@@ -11,7 +11,7 @@ class MedicineEffect(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    __table_args__ = (db.UniqueConstraint('medicine_id', 'symptom_id', name='uq_medicine_symptom'),)
+    # __table_args__ = (db.UniqueConstraint('medicine_id', 'symptom_id', name='uq_medicine_symptom'),)
     
     def __repr__(self):
         return f'<MedicineEffect medicine_id={self.medicine_id} symptom_id={self.symptom_id}>'

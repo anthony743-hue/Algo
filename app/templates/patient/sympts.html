@@ -16,7 +16,6 @@
                         <h3 class="text-white mb-1 fw-bold h4">
                             <i class="bi bi-clipboard2-pulse me-2"></i>Configuration des Symptômes
                         </h3>
-                        <p class="text-white-50 mb-0 small">Sélectionnez les symptômes et définissez les intensités</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +29,6 @@
                             <tr>
                                 <th scope="col" class="border-0 text-muted small text-uppercase ps-4" style="width: 80px;">Actif</th>
                                 <th scope="col" class="border-0 text-muted small text-uppercase">Symptôme</th>
-                                <th scope="col" class="border-0 text-muted small text-uppercase text-center" style="width: 150px;">Prix Estimé</th>
                                 <th scope="col" class="border-0 text-muted small text-uppercase text-center" style="width: 150px;">Intensité</th>
                             </tr>
                         </thead>
@@ -42,18 +40,12 @@
                                     <input class="form-check-input rounded-circle border-2" type="checkbox" name="symptom_{{ s.id }}" checked style="width: 1.2em; height: 1.2em;">
                                 </td>
                                 <!-- Nom du symptôme -->
-                                <td class="fw-semibold text-dark">
+                                <td class="ps-4 fw-semibold text-dark">
                                     {{ s.name }}
-                                </td>
-                                <!-- Badge Prix -->
-                                <td class="text-center">
-                                    <span class="badge bg-light text-dark border fw-normal py-2 px-3 rounded-pill">
-                                        {{ s.prix }} Ar
-                                    </span>
                                 </td>
                                 <!-- Input Intensité -->
                                 <td class="text-center">
-                                    <input type="number" name="intensity" class="form-control form-control-sm text-center fw-bold border-0 bg-light" value="5" min="1" max="10" style="width: 70px; margin: 0 auto;">
+                                    <input type="number" name="intensity" class="form-control form-control-sm text-center fw-bold border-1 bg-light border-dark" min="0" max="10" style="width: 70px; margin: 0 auto;">
                                 </td>
                                 <input type="hidden" name="symptom_id" value="{{ s.id }}">
                             </tr>
