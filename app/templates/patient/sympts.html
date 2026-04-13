@@ -4,25 +4,20 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <!-- Grille corrigée : centrée et largeur adaptée -->
     <div class="col-12 col-lg-10 col-xl-8">
-        
-        <div class="card border-0 shadow-sm overflow-hidden">
-            
-            <!-- Header -->
+        <form action="/patient-symptoms/submit" method="post" class="card border-0 shadow-sm overflow-hidden">
             <div class="card-header border-0 py-4" style="background-color: var(--primary-teal);">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h3 class="text-white mb-1 fw-bold h4">
                             <i class="bi bi-clipboard2-pulse me-2"></i>Configuration des Symptômes
                         </h3>
+                        <p class="text-white-50 mb-0 small">Sélectionnez les symptômes actifs et leur intensité avant de générer l'ordonnance.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Body avec Tableau -->
             <div class="card-body p-0 bg-white">
-                <!-- Hauteur dynamique basée sur le viewport (vh) -->
                 <div class="table-responsive table-container-vh">
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
@@ -35,24 +30,19 @@
                         <tbody>
                             {% for s in lsSympt %}
                             <tr>
-                                <!-- Checkbox centrée -->
                                 <td class="ps-4 text-center">
-                                    <input class="form-check-input rounded-circle border-2" type="checkbox" name="symptom_{{ s.id }}" checked style="width: 1.2em; height: 1.2em;">
+                                    <input class="form-check-input rounded-circle border-2" type="checkbox" name="symptom_ids" value="{{ s.id }}" style="width: 1.2em; height: 1.2em;">
                                 </td>
-                                <!-- Nom du symptôme -->
                                 <td class="ps-4 fw-semibold text-dark">
                                     {{ s.name }}
                                 </td>
-                                <!-- Input Intensité -->
                                 <td class="text-center">
-                                    <input type="number" name="intensity" class="form-control form-control-sm text-center fw-bold border-1 bg-light border-dark" min="0" max="10" style="width: 70px; margin: 0 auto;">
+                                    <input type="number" name="intensity_{{ s.id }}" class="form-control form-control-sm text-center fw-bold border-1 bg-light border-dark" min="0" value="0" style="width: 70px; margin: 0 auto;">
                                 </td>
-                                <input type="hidden" name="symptom_id" value="{{ s.id }}">
                             </tr>
                             {% else %}
-                            <!-- Message si liste vide -->
                             <tr>
-                                <td colspan="4" class="text-center py-5 text-muted">
+                                <td colspan="3" class="text-center py-5 text-muted">
                                     <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
                                     Aucun symptôme disponible.
                                 </td>
@@ -63,24 +53,22 @@
                 </div>
             </div>
 
-            <!-- Section Budget (Séparée visuellement) -->
             <div class="border-top bg-light p-4">
                 <div class="row align-items-center justify-content-end">
                     <div class="col-auto">
                         <label for="budget" class="form-label mb-0 fw-bold text-muted text-uppercase small">
-                            <i class="bi bi-wallet2 me-1"></i> Budget Maximum
+                            <i class="bi bi-wallet2 me-1"></i> Budget 
                         </label>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="number" name="budget" class="form-control form-control-lg text-end fw-bold" id="budget" placeholder="Ex: 50000" required>
+                            <input type="number" name="budget" class="form-control form-control-lg text-end fw-bold" id="budget" placeholder="Ex: 50000" min="0" required>
                             <span class="input-group-text fw-bold bg-white">Ar</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer Actions -->
             <div class="card-footer bg-white border-top py-3 px-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="/" class="btn btn-link text-muted text-decoration-none ps-0">
@@ -91,8 +79,7 @@
                     </button>
                 </div>
             </div>
-            
-        </div>
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -1,8 +1,10 @@
-[ ] Arranger les pages
+factorise moi le fichier patient.py car il y a beaucoup de redondance dans les fonctions qui calculent les effets des medicaments sur les symptomes
+et aussi separe certains fonctions dans un fichier utils.py pour les fonctions qui sont plus generales et qui peuvent etre reutilise dans d'autres parties de l'application
 
-[ ] Afficher les medicaments 
+Il faudra que tu complete routes.py au niveau de la fonction getOrdonnance
+si le budget est respectee :
+redirige vers meds/success.html
+si le budget manque :
+redirige vers meds/lazy.html
 
-[ ] Afficher la liste des patients
-
-[ ] Preparer un formulaire pour entrer les donnees d'un patients
-
+Base toi sur le design de la page patient/sympts.html pour le concevoir

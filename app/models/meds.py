@@ -12,7 +12,7 @@ class Medicine(db.Model):
     
     # Relations
     medicine_effects = db.relationship('MedicineEffect', backref='medicine', lazy=True, cascade='all, delete-orphan')
-    prescription_medicines = db.relationship('PrescriptionMedicine', backref='medicine', lazy=True)
+    # prescription_medicines = db.relationship('PrescriptionMedicine', backref='medicine', lazy=True)
     
     def __repr__(self):
         return f'<Medicine {self.name}>'
