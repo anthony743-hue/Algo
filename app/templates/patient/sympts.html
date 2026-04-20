@@ -31,7 +31,7 @@
                             {% for s in lsSympt %}
                             <tr>
                                 <td class="ps-4 text-center">
-                                    <input class="form-check-input rounded-circle border-2" type="checkbox" name="symptom_ids" value="{{ s.id }}" style="width: 1.2em; height: 1.2em;">
+                                    <input class="form-check-input rounded-circle border-2" type="hidden" name="symptom_ids" value="{{ s.id }}" style="width: 1.2em; height: 1.2em;">
                                 </td>
                                 <td class="ps-4 fw-semibold text-dark">
                                     {{ s.name }}

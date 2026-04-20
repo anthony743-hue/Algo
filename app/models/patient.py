@@ -180,7 +180,7 @@ class Patient(db.Model):
 
             remede_item = self._buildRemedyItem(meilleur_med, quantite)
             remede.append(remede_item)
-            budget_restant -= remede_item['total_price']
+            budget -= remede_item['total_price']
             symptomes_courants = apply_medicine_effect(
                 symptomes_restants=symptomes_courants,
                 medicine_id=meilleur_med.id,
@@ -244,24 +244,25 @@ class Patient(db.Model):
 
             max_affordable = max_needed if med.price == 0 else int(budget // med.price)
             max_quantity = min(max_needed, max_affordable)
-            remedy_item = self._buildRemedyItem(med, max_quantity)
-            next_remaining = apply_medicine_effect(
-                symptomes_restants=remaining_symptoms,
-                medicine_id=med.id,
-                quantite=max_quantity,
-                meds_effects=meds_effects,
-            )
-            self.getAllMedsRecursive(
-                sympts=sympts,
-                meds=meds,
-                meds_effects=meds_effects,
-                budget=budget - remedy_item['total_price'],
-                lst=remedy + [remedy_item],
-                res=results,
-                arr=next_remaining,
-                seen=visited,
-                start_index=med_index + 1,
-            )
+            for quantity in range(1, max_quantity + 1):
+                remedy_item = self._buildRemedyItem(med, quantity)
+                next_remaining = apply_medicine_effect(
+                    symptomes_restants=remaining_symptoms,
+                    medicine_id=med.id,
+                    quantite=quantity,
+                    meds_effects=meds_effects,
+                )
+                self.getAllMedsRecursive(
+                    sympts=sympts,
+                    meds=meds,
+                    meds_effects=meds_effects,
+                    budget=budget - remedy_item['total_price'],
+                    lst=remedy + [remedy_item],
+                    res=results,
+                    arr=next_remaining,
+                    seen=visited,
+                    start_index=med_index + 1,
+                )
             
                 
 
